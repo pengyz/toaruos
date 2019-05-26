@@ -314,22 +314,22 @@ endif
 
 .PHONY: run
 run: image.iso
-	qemu-system-i386 -cdrom $< ${QEMU_ARGS}
+	qemu-system-x86_64 -cdrom $< ${QEMU_ARGS}
 
 .PHONY: fast
 fast: image.iso
-	qemu-system-i386 -cdrom $< ${QEMU_ARGS} \
+	qemu-system-x86_64 -cdrom $< ${QEMU_ARGS} \
 	  -fw_cfg name=opt/org.toaruos.bootmode,string=normal
 
 .PHONY: headless
 headless: image.iso
-	@qemu-system-i386 -cdrom $< ${QEMU_ARGS} \
+	@qemu-system-x86_64 -cdrom $< ${QEMU_ARGS} \
 	  -nographic -no-reboot \
 	  -fw_cfg name=opt/org.toaruos.bootmode,string=headless
 
 .PHONY: shell
 shell: image.iso
-	@qemu-system-i386 -cdrom $< ${QEMU_ARGS} \
+	@qemu-system-x86_64 -cdrom $< ${QEMU_ARGS} \
 	  -nographic -no-reboot \
 	  -fw_cfg name=opt/org.toaruos.bootmode,string=headless \
 	  -fw_cfg name=opt/org.toaruos.forceuser,string=local \
